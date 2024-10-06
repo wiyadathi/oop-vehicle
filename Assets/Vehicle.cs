@@ -25,6 +25,10 @@ public abstract class Vehicle : MonoBehaviour
     public float Durability {get {return durability; } set { fuel = value; } }
 
     public float Speed;
+
+    public abstract void ReFuel(float newFuel);
+    public abstract void Repair();
+
     void Start()
     {
     }
@@ -36,5 +40,11 @@ public abstract class Vehicle : MonoBehaviour
         Durability = _durability;
         Fuel = _fuel;
         Speed = speed;
+    }
+
+    void DisplayStatus()
+    {
+        Debug.Log("Brand: " + brand + ", Model: " + model + ", Fuel Level: " + Fuel + 
+                "%, Durability: " + Durability + "%, Speed: " + Speed + "km/h" );
     }
 }
