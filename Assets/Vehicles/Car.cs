@@ -10,6 +10,11 @@ public class Car : Vehicle
     {
         Init("Toyota", "Corolla",50, 80, 100);
         PassengerCapacity = 5;
+
+        DisplayStatus();
+        ReFuel(20);
+        Repair();
+        DisplayStatus();
     }
 
     public override void ReFuel(float newFuel)
@@ -19,6 +24,9 @@ public class Car : Vehicle
 
     public override void Repair()
     {
-        throw new System.NotImplementedException();
+        Durability = 100;
+        Debug.Log("Car is being repaired. Durability: " + Durability);
     }
+
+  
 }
