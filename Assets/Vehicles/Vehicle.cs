@@ -15,9 +15,18 @@ public abstract class Vehicle : MonoBehaviour
         get { return fuel; }
         set
         {
-            if (value < 0 || value > 100)
-                fuel = 0;
-            else fuel = value;
+            if (value < 0)
+            {
+                fuel = 0;  // Set to minimum value of 0 if input is below 0
+            }
+            else if (value > 100)
+            {
+                fuel = 100;  // Set to maximum value of 100 if input is above 100
+            }
+            else
+            {
+                fuel = value;  // Set to the provided value if within range
+            }
         }
     }
 
@@ -28,6 +37,9 @@ public abstract class Vehicle : MonoBehaviour
 
     public abstract void ReFuel(float newFuel);
     public abstract void Repair();
+
+    // Abstract method that returns the resale value of the vehicle
+    public abstract int GetResaleValue();
 
     void Start()
     {
