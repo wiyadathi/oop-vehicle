@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Motorcycle : Vehicle
 {
-    bool isSportBike;
     void Start()
     {
-        Init("Vespa", "S125", 50, 50, 50);
-
-        isSportBike = true;
+        Init("Harley Davidson", "Iron 883", 50, 50, 100);
 
         DisplayStatus();
         ReFuel(20);
@@ -20,27 +17,22 @@ public class Motorcycle : Vehicle
     // Update is called once per frame
     public override void ReFuel(float newFuel)
     {
-        Debug.Log("Motorcycle is refueled: " + newFuel + ", Current fuel: " + (Fuel + newFuel));
+        Fuel += newFuel;
+        if (Fuel > 100) Fuel = 100;
+        Debug.Log("Motorcycle is refueled: " + newFuel + ", Current fuel: " + Fuel + "%");
     }
 
     public override void Repair()
     {
         Durability = 100;
-        Debug.Log("Motorcycle is repaired. Durability: " + Durability);
+        Debug.Log("Motorcycle is fully repaired. Durability: " + Durability + "%");
     }
 
     public override int GetResaleValue()
     {
         int baseResaleValue = 5000;
-        int durabilityBonus = Durability * 2;
-        int sportBikeBonus = 0;
-
-        if (isSportBike)
-        {
-            sportBikeBonus = 2000;
-        }
-
-        return baseResaleValue + durabilityBonus + sportBikeBonus;
+      
+        return baseResaleValue + (Durability * 5) + (int)(Fuel * 5);
     }
 
 }
