@@ -56,7 +56,7 @@ public abstract class Vehicle : MonoBehaviour
 
     public void DisplayStatus()
     {
-        Debug.Log("Brand: " + brand + ", Model: " + model + ", Fuel Level: " + Fuel + 
-                "%, Durability: " + Durability + "%, Speed: " + Speed + "km/h");
+        Debug.Log("Brand: " + brand + ", Model: " + model + ", Fuel Level: " + Fuel +
+                "%, Durability: " + Durability + "%, Speed: " + Speed + ", Resale value: " + GetResaleValue());
     }
 }

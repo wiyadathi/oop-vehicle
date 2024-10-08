@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Car : Vehicle
 {
-    int passengerCapacity;
-    public int PassengerCapacity {  get; private set; }
+    int mileage;
+    public// int PassengerCapacity {  get; private set; }
     void Start()
     {
         Init("Toyota", "Corolla",50, 80, 100);
-        PassengerCapacity = 5;
+        //PassengerCapacity = 5;
+
+        mileage = 50000;
 
         DisplayStatus();
         ReFuel(20);
@@ -28,5 +30,19 @@ public class Car : Vehicle
         Debug.Log("Car is being repaired. Durability: " + Durability);
     }
 
-  
+    public override int GetResaleValue()
+    {
+        int baseResaleValue = 10000;
+        int durabilityBonus = Durability * 10;
+        int mileagePenulty = 0;
+
+        if (mileage > 100000) 
+        {
+            mileagePenulty = 1000;
+        }
+
+        return baseResaleValue + durabilityBonus - mileagePenulty; 
+    }
+
+
 }
