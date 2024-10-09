@@ -8,8 +8,24 @@ public abstract class Item : MonoBehaviour
 
     protected string itemType;
 
-    private string rarity;
-    public string Rarity { get {return rarity; } set {rarity = value; } }
+    private int rarity;
+    public int Rarity
+    {
+        get { return rarity; }
+        set
+        {
+            if (value < 1)
+            {
+                rarity = 1;
+            }
+            else if (value > 5)
+                rarity = 5;
+            else
+            {
+                rarity = value;
+            }
+        }
+    }
 
     private int durability;
     public int Durability
@@ -33,12 +49,12 @@ public abstract class Item : MonoBehaviour
     }
 
     public abstract void Use();
-    public abstract void Repair();
+    public abstract void Upgrade();
 
     public abstract int GetItemValue();
 
     // Constructor for Item class (since MonoBehaviour classes can't have constructors)
-    public void InitializeItem(int durability, string rarity, string itemType, float weight)
+    public void InitializeItem(int durability, int rarity, string itemType, float weight)
     {
         this.durability = durability;
         this.rarity = rarity;
@@ -48,7 +64,8 @@ public abstract class Item : MonoBehaviour
 
     public void DisplayItemInfo()
     {
-        Debug.Log("Item Type: " + itemType + "Durability: " + durability + "%, Rarity: " + rarity + ", Weight: " + weight + "kg." );
+        Debug.Log("Item Type: " + itemType + "Durability: " + durability + "%, Rarity: " 
+            + rarity + ", Weight: " + weight + ", Item Value: " + GetItemValue() );
     }
 
 
