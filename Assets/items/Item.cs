@@ -6,7 +6,7 @@ public abstract class Item : MonoBehaviour
 {
     public float weight;
 
-    protected string itemType;
+    protected string itemName;
 
     private int rarity;
     public int Rarity
@@ -58,13 +58,13 @@ public abstract class Item : MonoBehaviour
     {
         this.durability = durability;
         this.rarity = rarity;
-        this.itemType = itemType;
+        this.itemName = itemType;
         this.weight = weight;
     }
 
     public void DisplayItemInfo()
     {
-        Debug.Log("Item Type: " + itemType + "Durability: " + durability + "%, Rarity: " 
+        Debug.Log("Item Type: " + itemName + "Durability: " + durability + "%, Rarity: " 
             + rarity + ", Weight: " + weight + ", Item Value: " + GetItemValue() );
     }
 
