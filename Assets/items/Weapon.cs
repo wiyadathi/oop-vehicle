@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Weapon : Item
 {
-    int attackPower;
+    float attackPower;
 
     // Start is called before the first frame update
     void Start()
     {
-        InitializeItem(80, 4, "Sword", 2.5f);
-        attackPower = 120;
+        InitializeItem("Sword", 80, 4, 2.5f);
+        attackPower = 120f;
 
         DisplayItemInfo();
         Debug.Log("Attack Power : " + attackPower);
@@ -40,7 +40,8 @@ public class Weapon : Item
 
     public override int GetItemValue()
     {
-        return (Rarity * 100) + (attackPower * 2);
+        int baseWeaponValue = 500;
+        return baseWeaponValue + (Rarity * 100) + ((int)attackPower * 5);
     }
 
 

@@ -54,7 +54,7 @@ public abstract class Item : MonoBehaviour
     public abstract int GetItemValue();
 
     // Constructor for Item class (since MonoBehaviour classes can't have constructors)
-    public void InitializeItem(int durability, int rarity, string itemType, float weight)
+    public void InitializeItem(string itemType, int durability, int rarity, float weight)
     {
         this.durability = durability;
         this.rarity = rarity;
@@ -64,7 +64,7 @@ public abstract class Item : MonoBehaviour
 
     public void DisplayItemInfo()
     {
-        Debug.Log("Item Type: " + itemName + "Durability: " + durability + "%, Rarity: " 
+        Debug.Log("Item Name: " + itemName + ", Durability: " + durability + "%, Rarity: " 
             + rarity + ", Weight: " + weight + ", Item Value: " + GetItemValue() );
     }
 
