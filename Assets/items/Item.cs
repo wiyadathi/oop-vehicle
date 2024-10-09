@@ -48,7 +48,7 @@ public abstract class Item : MonoBehaviour
         }
     }
 
-    public abstract void Use();
+    public abstract void UseItem(int damageAmount);
     public abstract void Upgrade();
 
     public abstract int GetItemValue();
