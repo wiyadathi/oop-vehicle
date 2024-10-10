@@ -27,7 +27,7 @@ public abstract class Structure : MonoBehaviour
 
     //public abstract void TakeDamage(int damageAmount);
     public abstract void Upgrade();
-    public abstract void GetProductionRate(int workers);
+    public abstract int GetProductionRate(int workers);
 
 
     public void InitializeStructure(string name, int health, int defense, float buildTime, int maxCapacity)
