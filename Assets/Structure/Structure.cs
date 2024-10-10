@@ -25,7 +25,7 @@ public abstract class Structure : MonoBehaviour
 
     public float BuildTime;
 
-    public abstract void Repair();
+    //public abstract void TakeDamage(int damageAmount);
     public abstract void Upgrade();
     public abstract void GetProductionRate(int workers);
 
@@ -50,5 +50,17 @@ public abstract class Structure : MonoBehaviour
 
     }
 
-} 
-    
+    public void TakeDamage(int damageAmount)
+    {
+        Debug.Log(structureName + " is taking " + damageAmount + " damage.");
+        Health -= damageAmount;  // Decrease the health by the damage amount
+        if (Health <= 0)
+        {
+            Health = 0;
+            Debug.Log(structureName + " has been destroyed.");
+        }
+
+        Debug.Log(structureName + " Health after damage: " + Health + "%");
+    }
+}
+
