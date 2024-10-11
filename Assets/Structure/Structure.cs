@@ -22,9 +22,8 @@ public abstract class Structure : MonoBehaviour
 
     public float BuildTime;
 
-    //public abstract void TakeDamage(int damageAmount);
     public abstract void Upgrade();
-    public abstract int GetProductionRate(int workers);
+    public abstract int GetProductionRate();
 
 
     public void InitializeStructure(string name, int health, int defense, float buildTime, int maxCapacity)
@@ -33,15 +32,13 @@ public abstract class Structure : MonoBehaviour
         this.health = health;
         this.defenseLevel = defense;   
         this.BuildTime = buildTime;
-       // this.maxCapacity = maxCapacity; 
-        
     }
  
     public void DisplayStructureStatus()
     {
-
         Debug.Log("Structure: " + structureName + ", Health: " + Health + "%, Defense Level: " 
-            + DefenseLevel + ", Build Time: " + BuildTime + " seconds.");
+            + DefenseLevel + ", Build Time: " + BuildTime + " seconds., Production Rate: " + 
+            GetProductionRate());
 
     }
 

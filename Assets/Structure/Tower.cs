@@ -15,7 +15,6 @@ public class Tower : Structure
         DisplayStructureStatus();
         TakeDamage(20);
         Upgrade();
-        GetProductionRate(10);
         DisplayStructureStatus();
     }
 
@@ -28,8 +27,9 @@ public class Tower : Structure
         Debug.Log(structureName + " upgraded! New Defense Level: " + DefenseLevel + ", New Attack Power: " + attackPower);
     }
 
-    public override int GetProductionRate(int workers)
+    public override int GetProductionRate()
     {
+        int workers = 10;
         return (DefenseLevel * 2) + (workers * attackPower / 100);
     }
 }

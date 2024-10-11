@@ -16,7 +16,6 @@ public class Barrack : Structure
         DisplayStructureStatus();
         TakeDamage(20);
         Upgrade();
-        GetProductionRate(20);
         DisplayStructureStatus();
     }
 
@@ -30,7 +29,7 @@ public class Barrack : Structure
             DefenseLevel + ", New Unit Capacity: " + unitCapacity);
     }
 
-    public override int GetProductionRate(int workers)
+    public override int GetProductionRate()
     {
         return (int)(unitCapacity * (DefenseLevel + trainingEfficiency * 10));
     }
