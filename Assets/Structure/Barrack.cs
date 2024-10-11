@@ -8,17 +8,25 @@ public class Barrack : Structure
     float trainingEfficiency;
     void Start()
     {
-        InitializeStructure("Barrack", 90, 50, 150,50);
+        structureName = "Barrack";
+        InitializeStructure( structureName, 90, 40, 150,50);
         unitCapacity = 100;
         trainingEfficiency = 1.5f;
+
+        DisplayStructureStatus();
+        TakeDamage(20);
+        Upgrade();
+        GetProductionRate(20);
+        DisplayStructureStatus();
     }
 
     public override void Upgrade()
     {
-        Debug.Log("Upgrading Barracks...");
+        Debug.Log("Upgrading " + structureName + "...");
         DefenseLevel += 5;
         unitCapacity += 10;
-        Debug.Log("Barracks upgraded! New Defense Level: " + 
+        Health = 100;
+        Debug.Log(structureName + " upgraded! New Defense Level: " + 
             DefenseLevel + ", New Unit Capacity: " + unitCapacity);
     }
 

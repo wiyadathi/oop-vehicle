@@ -17,26 +17,17 @@ public class Armor : Item
         Debug.Log("Armor Defense Rating : " + defenseRating);
         UseItem(5);
         Upgrade();
-
         DisplayItemInfo();
 
     }
 
-    public override void UseItem(int damageAmount)
-    {
-        Debug.Log("Equipping armor...");
-        Durability -= damageAmount;  // Decrease durability by the specified damage amount
-        if (Durability < 0) Durability = 0;
-        Debug.Log("Armor equipped. Remaining Durability: " + Durability + "%");
-    }
-
-    // Override the Upgrade method
     public override void Upgrade()
     {
         Debug.Log("Upgrading armor...");
         defenseRating += 15;
         Durability = 100;  // Reset durability after upgrade
-        Debug.Log("Armor upgraded! New Defense Rating: " + defenseRating + ", Durability: " + Durability + "%");
+        Debug.Log(itemName + " upgraded! New Defense Rating: " 
+            + defenseRating + ", Durability: " + Durability + "%");
     }
 
     public override int GetItemValue()

@@ -8,16 +8,24 @@ public class Tower : Structure
     
     void Start()
     {
-        InitializeStructure("Tower", 80, 30, 60, 100 );
+        structureName = "Tower";
+        InitializeStructure(structureName, 80, 30, 60, 100 );
         attackPower = 10;
+
+        DisplayStructureStatus();
+        TakeDamage(20);
+        Upgrade();
+        GetProductionRate(10);
+        DisplayStructureStatus();
     }
 
     public override void Upgrade()
     {
-        Debug.Log("Upgrading Tower...");
+        Debug.Log("Upgrading " + structureName + "...");
         DefenseLevel += 10;
         attackPower += 20;
-        Debug.Log("Tower upgraded! New Defense Level: " + DefenseLevel + ", New Attack Power: " + attackPower);
+        Health = 100;
+        Debug.Log(structureName + " upgraded! New Defense Level: " + DefenseLevel + ", New Attack Power: " + attackPower);
     }
 
     public override int GetProductionRate(int workers)

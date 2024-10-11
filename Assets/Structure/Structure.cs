@@ -9,9 +9,6 @@ public abstract class Structure : MonoBehaviour
     int health;
     public int Health {  get { return health; } set { health = value; } }
 
-    int maxCapacity;
-    public int MaxCapacity { get { return maxCapacity; } }
-
     int defenseLevel;
     public int DefenseLevel { 
         get { return defenseLevel; } 
@@ -36,17 +33,15 @@ public abstract class Structure : MonoBehaviour
         this.health = health;
         this.defenseLevel = defense;   
         this.BuildTime = buildTime;
-        this.maxCapacity = maxCapacity; 
+       // this.maxCapacity = maxCapacity; 
         
     }
  
-    // Method to display the structure's status 
-
     public void DisplayStructureStatus()
     {
 
         Debug.Log("Structure: " + structureName + ", Health: " + Health + "%, Defense Level: " 
-            + DefenseLevel + ", Build Time: " + BuildTime + " seconds, Max Capacity: " + MaxCapacity);
+            + DefenseLevel + ", Build Time: " + BuildTime + " seconds.");
 
     }
 

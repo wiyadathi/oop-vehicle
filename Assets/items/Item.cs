@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    public float weight;
-
     protected string itemName;
 
     private int rarity;
@@ -48,12 +46,11 @@ public abstract class Item : MonoBehaviour
         }
     }
 
-    public abstract void UseItem(int damageAmount);
+    public float weight;
     public abstract void Upgrade();
 
     public abstract int GetItemValue();
 
-    // Constructor for Item class (since MonoBehaviour classes can't have constructors)
     public void InitializeItem(string itemType, int durability, int rarity, float weight)
     {
         this.durability = durability;
@@ -62,10 +59,18 @@ public abstract class Item : MonoBehaviour
         this.weight = weight;
     }
 
+    public void UseItem(int damageAmount)
+    {
+        Debug.Log($"Using {itemName}...");
+        Durability -= damageAmount;
+        if (Durability < 0) { Durability = 0; }
+        Debug.Log(itemName + " used. Remaining Durability: " + Durability + "%");
+    }
+
     public void DisplayItemInfo()
     {
-        Debug.Log("Item Name: " + itemName + ", Durability: " + durability + "%, Rarity: " 
-            + rarity + ", Weight: " + weight + ", Item Value: " + GetItemValue() );
+        Debug.Log("Item: " + itemName + ", Durability: " + durability + "%, Rarity: " + rarity + 
+            ", Weight: " + weight + ", Item Value: " + GetItemValue() );
     }
 
 
