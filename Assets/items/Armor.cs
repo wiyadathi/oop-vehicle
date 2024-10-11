@@ -9,12 +9,12 @@ public class Armor : Item
     // Start is called before the first frame update
     void Start()
     {
-        InitializeItem("Steel Chestplate", 100,  3, 7.0f);
-
+        itemName = "Steel Chestplate";
+        InitializeItem(itemName, 100,  3, 7.0f);
         defenseRating = 80;
 
         DisplayItemInfo();
-        Debug.Log("Armor Defense Rating : " + defenseRating);
+        Debug.Log(itemName + " Defense Rating : " + defenseRating);
         UseItem(5);
         Upgrade();
         DisplayItemInfo();

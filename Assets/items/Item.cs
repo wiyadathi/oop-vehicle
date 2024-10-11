@@ -25,8 +25,8 @@ public abstract class Item : MonoBehaviour
         }
     }
 
-    private int durability;
-    public int Durability
+    private float durability;
+    public float Durability
     {
         get { return durability; }
         set
@@ -51,7 +51,7 @@ public abstract class Item : MonoBehaviour
 
     public abstract int GetItemValue();
 
-    public void InitializeItem(string itemType, int durability, int rarity, float weight)
+    public void InitializeItem(string itemType, float durability, int rarity, float weight)
     {
         this.durability = durability;
         this.rarity = rarity;

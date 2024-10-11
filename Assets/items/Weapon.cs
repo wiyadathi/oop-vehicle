@@ -8,11 +8,12 @@ public class Weapon : Item
 
     void Start()
     {
-        InitializeItem("Sword", 80, 4, 2.5f);
+        itemName = "Sword";
+        InitializeItem(itemName, 80, 4, 2.5f);
         attackPower = 120f;
 
         DisplayItemInfo();
-        Debug.Log("Weapon Attack Power : " + attackPower);
+        Debug.Log(itemName + " Attack Power : " + attackPower);
         UseItem(10);
         Upgrade();
         DisplayItemInfo();
