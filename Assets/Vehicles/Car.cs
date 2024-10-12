@@ -4,37 +4,33 @@ using UnityEngine;
 
 public class Car : Vehicle
 {
-    int numberOfSeats;
-    public// int PassengerCapacity {  get; private set; }
+    int horsepower;
     void Start()
     {
-        Init("Toyota", "Corolla",50, 80, 100);
-        numberOfSeats = 5;
+        vehicleName = "Car";
+        InitializeVehicle(vehicleName, 90, 7, 100);
+        horsepower = 150;
 
-        DisplayStatus();
-        ReFuel(20);
-        Repair();
-        DisplayStatus();
+        DisplayVehicleStatus();
+        Debug.Log("Horsepower: " + horsepower);
+        Drive(50);
+        EnhancePerformance();
+        DisplayVehicleStatus();
     }
 
-    public override void ReFuel(float newFuel)
+    public override void EnhancePerformance()
     {
-        Fuel += newFuel;
-        
-        Debug.Log("Car is refueled: " + newFuel +", Current fuel: " + Fuel + "%");
+        Debug.Log("Upgrading " + vehicleName + "...");
+        SpeedLevel += 30;
+        horsepower += 5;  // Restore durability after upgrade
+        Debug.Log(vehicleName + " upgraded! New Speed Level: " + SpeedLevel + 
+            ", Horsepower + " + horsepower);
     }
 
-    public override void Repair()
+    public override int GetTravelRange()
     {
-        Durability = 100;
-        Debug.Log("Car is fully repaired. Durability: " + Durability + "%");
-    }
-
-    public override int GetResaleValue()
-    {
-        int baseResaleValue = 10000;
-
-        return baseResaleValue + (Durability * 10) + ((int)Fuel * 10) + (numberOfSeats * 10); 
+        float baseFuelEfficiency = 15.0f;  // Base efficiency in km per liter
+        return (int)(FuelCapacity * (baseFuelEfficiency - horsepower * 2));
     }
 
 

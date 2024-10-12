@@ -23,8 +23,9 @@ public class Tower : Structure
         Debug.Log("Upgrading " + structureName + "...");
         DefenseLevel += 10;
         attackPower += 20;
-        Health = 100;
-        Debug.Log(structureName + " upgraded! New Defense Level: " + DefenseLevel + ", New Attack Power: " + attackPower);
+        Health += 20;
+        Debug.Log(structureName + " upgraded! New Defense Level: " + DefenseLevel + 
+            ", New Attack Power: " + attackPower + ", Health: " + Health);
     }
 
     public override int GetProductionRate()

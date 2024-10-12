@@ -4,35 +4,32 @@ using UnityEngine;
 
 public class Motorcycle : Vehicle
 {
+
     void Start()
     {
-        Init("Harley Davidson", "Iron 883", 50, 50, 100);
+        vehicleName = "Motorcycle";
+        InitializeVehicle(vehicleName, 50, 5, 50);
 
-        DisplayStatus();
-        ReFuel(20);
-        Repair();
-        DisplayStatus();
+        DisplayVehicleStatus();
+        Drive(40);
+        EnhancePerformance();
+        DisplayVehicleStatus();
     }
 
-    // Update is called once per frame
-    public override void ReFuel(float newFuel)
+
+    public override void EnhancePerformance()
     {
-        Fuel += newFuel;
-        if (Fuel > 100) Fuel = 100;
-        Debug.Log("Motorcycle is refueled: " + newFuel + ", Current fuel: " + Fuel + "%");
+        Debug.Log("Upgrading " + vehicleName + "...");
+        SpeedLevel += 20;
+        Durability += 2;  // Restore durability after upgrade
+        Debug.Log(vehicleName + " upgraded! New Speed Level: " + 
+            SpeedLevel + ", Durability + " + Durability + "/10");
     }
 
-    public override void Repair()
+    public override int GetTravelRange()
     {
-        Durability = 100;
-        Debug.Log("Motorcycle is fully repaired. Durability: " + Durability + "%");
-    }
-
-    public override int GetResaleValue()
-    {
-        int baseResaleValue = 5000;
-      
-        return baseResaleValue + (Durability * 5) + (int)(Fuel * 5);
+        float baseFuelEfficiency = 10.0f; // Base efficiency in km per liter (you can adjust this value)
+        return (int)(FuelCapacity * baseFuelEfficiency * (1 + (Durability / 100.0f)));
     }
 
 }

@@ -7,7 +7,14 @@ public abstract class Structure : MonoBehaviour
     protected string structureName;
 
     int health;
-    public int Health {  get { return health; } set { health = value; } }
+    public int Health {  get { return health; }
+        set
+        {
+            if (value < 0) health = 0;
+            else if (value > 100) health = 100;
+            else health = value;
+        }
+    } 
 
     int defenseLevel;
     public int DefenseLevel { 
@@ -36,7 +43,7 @@ public abstract class Structure : MonoBehaviour
  
     public void DisplayStructureStatus()
     {
-        Debug.Log("Structure: " + structureName + ", Health: " + Health + "%, Defense Level: " 
+        Debug.Log("Structure: " + structureName + ", Health: " + Health + ", Defense Level: " 
             + DefenseLevel + ", Build Time: " + BuildTime + " seconds., Production Rate: " + 
             GetProductionRate());
 
@@ -44,15 +51,15 @@ public abstract class Structure : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        Debug.Log(structureName + " is taking " + damageAmount + " damage.");
+        Debug.Log(structureName + " is applying " + damageAmount + " damage.");
         Health -= damageAmount;  // Decrease the health by the damage amount
+        Debug.Log(structureName + " Health after damage: " + Health);
+
         if (Health <= 0)
         {
-            Health = 0;
+            //Health = 0;
             Debug.Log(structureName + " has been destroyed.");
         }
-
-        Debug.Log(structureName + " Health after damage: " + Health + "%");
     }
 }
 

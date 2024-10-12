@@ -5,58 +5,74 @@ using UnityEngine;
 public abstract class Vehicle : MonoBehaviour
 {
 
-    protected string brand;
+    protected string vehicleName;
 
-    private string model;
-
-    private float fuel;
-    public float Fuel
+    private float speedLevel; //how fast the vehicle can move. It can be increased when the vehicle is upgraded.
+    public float SpeedLevel
     {
-        get { return fuel; }
-        set
+        get { return speedLevel; }
+        set //0 - 200 
         {
             if (value < 0)
-            {
-                fuel = 0;  // Set to minimum value of 0 if input is below 0
-            }
-            else if (value > 100)
-            {
-                fuel = 100;  // Set to maximum value of 100 if input is above 100
-            }
+                speedLevel = 0;  // Set to minimum value of 0 if input is below 0
+            else if (value > 200)
+                speedLevel = 200;  // Set to maximum value of 100 if input is above 100
             else
-            {
-                fuel = value;  // Set to the provided value if within range
-            }
+                speedLevel = value;  // Set to the provided value if within range
         }
     }
 
-    private int durability;
-    public int Durability {get {return durability; } set { durability = value; } }
+    private int durability; //health/structural integrity of the vehicle. It decreases when the vehicle takes damage.
+    public int Durability {get {return durability; }
+        set  // 0 - 10
+        {
+            if (value < 0)
+                durability = 0;  // Set to minimum value of 0 if input is below 0
+            else if (value > 10)
+                durability = 10;  // Set to maximum value of 100 if input is above 100
+            else
+                durability = value;
+        } 
+    }
 
-    public float Speed;
+    public float FuelCapacity; //The amount of fuel the vehicle can hold
 
-    public abstract void ReFuel(float newFuel);
-    public abstract void Repair();
+
+    public abstract void EnhancePerformance();
 
     // Abstract method that returns the resale value of the vehicle
-    public abstract int GetResaleValue();
+    public abstract int GetTravelRange();
 
-    void Start()
+    // ////////////////////////
+  
+    public void InitializeVehicle(string name, float speed, int durability, float fuel)
     {
+        this.vehicleName = name;
+        this.SpeedLevel = speed;
+        this.Durability = durability;
+        this.FuelCapacity = fuel;
     }
 
-    public void Init(string _brand, string _model, float _fuel, int _durability, float speed)
+    public void Drive(float fuelConsumed)
     {
-        brand = _brand;
-        model = _model;
-        Durability = _durability;
-        Fuel = _fuel;
-        Speed = speed;
+        Debug.Log(vehicleName + " is driving...");
+
+        // Decrease fuel capacity
+        FuelCapacity -= fuelConsumed;
+        Durability -= 1;
+
+        if (FuelCapacity < 0)
+        {
+            FuelCapacity = 0;
+        }
+
+        Debug.Log(vehicleName + " status after driving: Remaining Fuel: " + FuelCapacity +
+            ", Durability: " + Durability + "/10");
     }
 
-    public void DisplayStatus()
+    public void DisplayVehicleStatus()
     {
-        Debug.Log("Brand: " + brand + ", Model: " + model + ", Fuel Level: " + Fuel +
-                "%, Durability: " + Durability + "%, Speed: " + Speed + ", Resale value: " + GetResaleValue());
+        Debug.Log("Vehicle: " + vehicleName + ", Durability: " + Durability + "/10, Speed Level: "
+            + SpeedLevel + ", Fuel Capacity: " + FuelCapacity + " liters, Travel Range: " + GetTravelRange() + " km.");
     }
 }

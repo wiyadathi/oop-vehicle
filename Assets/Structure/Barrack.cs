@@ -9,13 +9,13 @@ public class Barrack : Structure
     void Start()
     {
         structureName = "Barrack";
-        InitializeStructure( structureName, 90, 40, 150,50);
+        InitializeStructure( structureName, 50, 50, 150,50);
         unitCapacity = 100;
         trainingEfficiency = 1.5f;
 
         DisplayStructureStatus();
-        TakeDamage(20);
         Upgrade();
+        TakeDamage(200);
         DisplayStructureStatus();
     }
 
@@ -25,8 +25,8 @@ public class Barrack : Structure
         DefenseLevel += 5;
         unitCapacity += 10;
         Health = 100;
-        Debug.Log(structureName + " upgraded! New Defense Level: " + 
-            DefenseLevel + ", New Unit Capacity: " + unitCapacity);
+        Debug.Log(structureName + " upgraded! New Defense Level: " + DefenseLevel + 
+            ", New Unit Capacity: " + unitCapacity + ", Health: " + Health);
     }
 
     public override int GetProductionRate()
