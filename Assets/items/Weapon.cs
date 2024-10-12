@@ -14,8 +14,8 @@ public class Weapon : Item
 
         DisplayItemInfo();
         Debug.Log(itemName + " Attack Power : " + attackPower);
-        UseItem(10);
         Upgrade();
+        UseItem(10);
         DisplayItemInfo();
 
     }
@@ -24,7 +24,7 @@ public class Weapon : Item
     {
         Debug.Log("Upgrading weapon...");
         attackPower += 20;
-        Durability = 100;  // Reset durability after upgrade
+        Durability += 10;  // Reset durability after upgrade
         Debug.Log(itemName + " upgraded! New Attack Power: " + attackPower + 
             ", Durability: " + Durability + "%");
     }

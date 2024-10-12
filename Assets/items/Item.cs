@@ -13,15 +13,11 @@ public abstract class Item : MonoBehaviour
         set
         {
             if (value < 1)
-            {
                 rarity = 1;
-            }
             else if (value > 5)
                 rarity = 5;
             else
-            {
                 rarity = value;
-            }
         }
     }
 
@@ -32,21 +28,16 @@ public abstract class Item : MonoBehaviour
         set
         {
             if (value < 0)
-            {
                 durability = 0;  // Set to minimum value of 0 if input is below 0
-            }
             else if (value > 100)
-            {
                 durability = 100;  // Set to maximum value of 100 if input is above 100
-            }
             else
-            {
                 durability = value;  // Set to the provided value if within range
-            }
         }
     }
 
     public float weight;
+
     public abstract void Upgrade();
 
     public abstract int GetItemValue();
@@ -63,8 +54,12 @@ public abstract class Item : MonoBehaviour
     {
         Debug.Log($"Using {itemName}...");
         Durability -= damageAmount;
-        if (Durability < 0) { Durability = 0; }
         Debug.Log(itemName + " used. Remaining Durability: " + Durability + "%");
+
+        if (Durability == 0) 
+        {
+            Debug.Log(itemName + " cannot be used.");
+        }
     }
 
     public void DisplayItemInfo()
@@ -72,7 +67,4 @@ public abstract class Item : MonoBehaviour
         Debug.Log("Item: " + itemName + ", Durability: " + durability + "%, Rarity: " + rarity + 
             ", Weight: " + weight + ", Item Value: " + GetItemValue() );
     }
-
-
-
 }

@@ -10,12 +10,12 @@ public class Armor : Item
     void Start()
     {
         itemName = "Steel Chestplate";
-        InitializeItem(itemName, 100,  3, 7.0f);
+        InitializeItem(itemName, 50,  3, 7.0f);
         defenseRating = 80;
 
         DisplayItemInfo();
         Debug.Log(itemName + " Defense Rating : " + defenseRating);
-        UseItem(5);
+        UseItem(100);
         Upgrade();
         DisplayItemInfo();
 

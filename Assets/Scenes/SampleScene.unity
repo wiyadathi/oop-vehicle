@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d33c603c01a010488b8708c972a880c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  FuelCapacity: 0
 --- !u!135 &954273481
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -943,7 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fc19c54f0d6c14db759750dab51fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  FuelCapacity: 0
 --- !u!65 &1986077281
 BoxCollider:
   m_ObjectHideFlags: 0
